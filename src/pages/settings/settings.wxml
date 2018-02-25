@@ -1,0 +1,5 @@
+<!--pages/settings/settings.wxml-->
+<view style='display: flex;flex-direction:column;margin-top:400rpx'>
+  <text style='text-align:center'>扫描二维码获取课程信息</text>
+  <button style='margin-top:50rpx' bindtap='scanCode'>点击扫码</button>
+</view>
