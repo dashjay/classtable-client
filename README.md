@@ -12,7 +12,7 @@
 
 ## 根据模板写课程信息
 
-[JSON格式化](http://www.kjson.com/jsformat/),方便查看JSON是否存在语法错误
+[JSON格式化](http://www.kjson.com/jsformat/)
 ```json
 {
     "schdules_list": [{
@@ -72,10 +72,7 @@
 
 将JSON数据作为字符串生成二维码,**强烈建议使用工具删除所有的换行和空格**,存在空格和换行不确定能否成功读入
 
-[生成无换行和空格的JSON数据](http://www.kjson.com/jsonparser/),并检查是否有语法错误
+[生成无换行和空格的JSON数据](http://www.kjson.com/jsonparser/)
 
 ## 生成二维码
 [生成二维码](http://www.kjson.com/qr/),纠错级别改为`L 7%`.
-
-## 最后
-以上仅给出建议使用的工具,可根据自身情况决定是否使用
