@@ -10,9 +10,9 @@
 首次登录要求扫码录入课程表,重新扫码可覆盖原有课程表
 
 
-## 根据自己的课程信息写JSON模板
+## 根据模板写课程信息
 
-[JSON格式化](http://www.kjson.com/jsformat/),方便查看课程信息是否出错
+[JSON格式化](http://www.kjson.com/jsformat/),方便查看JSON是否存在语法错误
 ```json
 {
     "schdules_list": [{
