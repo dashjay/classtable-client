@@ -1,5 +1,6 @@
 // pages/table/table.js
 const app = getApp()
+
 Page({
 
   /**
@@ -7,6 +8,8 @@ Page({
    */
   data: {
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
+    lastX: 0,          //滑动开始x轴位置
+    currentGesture: '', //标识手势
   },
 
   /**
@@ -27,13 +30,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
@@ -43,43 +39,18 @@ Page({
         url: '../settings/settings'
       })
     }
+    this.incrementZero()
     this.updateScreen()
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.incrementZero()
+    wx.stopPullDownRefresh()
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
   getWeekList: function (diff_day) {
     var week_num = parseInt(diff_day / 7 + 1)
     this.setData({
@@ -103,12 +74,11 @@ Page({
     }
     return week_list
   },
+
   updateScreen: function () {
     var now = new Date()
     var diff_day_without_increment = parseInt((now - app.globalData.start) / (1000 * 60 * 60 * 24))
-    //console.log(diff_day_without_increment)
     var diff_day = diff_day_without_increment + this.data.increment
-    //console.log(diff_day)
     if (diff_day < 0) {
       diff_day = 0
     }
@@ -116,6 +86,10 @@ Page({
     var week_list = this.getWeekList(diff_day)
     this.setData({
       week_list: week_list
+    })
+
+    wx.setNavigationBarTitle({
+      title: "第" + this.data.week_num + "周"
     })
   },
   incrementAdd: function () {
@@ -140,4 +114,35 @@ Page({
     })
     this.updateScreen()
   },
+
+
+  handleTouchMove: function (event) {
+    var currentX = event.touches[0].pageX
+    var tx = currentX - this.data.lastX
+    var text = ""
+    if (tx < -40) {
+      this.data.currentGesture = 'left'
+    }
+
+    else if (tx > 40) {
+      this.data.currentGesture = 'right'
+    }
+  },
+
+  //滑动开始事件
+  handleTouchStart: function (event) {
+    this.data.lastX = event.touches[0].pageX
+  },
+
+  //滑动结束事件
+  handleTouchEnd: function (event) {
+    if (this.data.currentGesture == 'left') {
+      this.incrementAdd()
+    }
+    if (this.data.currentGesture == 'right') {
+      this.incrementSub()
+    }
+    this.data.currentGesture = 0;
+  },
+
 })

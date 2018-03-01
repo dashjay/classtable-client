@@ -1,15 +1,11 @@
 <!--table.wxml-->
-<view>
-  <view style='display: flex;flex-direction: row;'>
-    <button style='flex:1;text-align:center;height:70rpx;font-size:30rpx;' bindtap='incrementSub'>上一周</button>
-    <button style='flex:1;text-align:center;height:70rpx;font-size:30rpx;' bindtap='incrementZero'>第{{week_num}}周</button>
-    <button style='flex:1;text-align:center;height:70rpx;font-size:30rpx;' bindtap='incrementAdd'>下一周</button>
-  </view>
-  <view style='display: flex;flex-direction: row;margin-left: 35rpx;margin-top:5rpx;background-color: #eee;border-radius: 10rpx'>
+<view bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
+  <view style='display: flex;flex-direction: row;margin-left:35rpx;margin-top:15rpx;background-color: #eee;border-radius: 10rpx'>
     <view wx:for="{{['一','二','三','四','五','六','日']}}" wx:key='' class="top-text">周{{item}}</view>
   </view>
+
   <view>
-    <view style="height:1002rpx;width:730rpx;display:flex;">
+    <view style="height:1010rpx;width:730rpx;display:flex;">
       <view style="background-color:#eee;color:#000;border-radius: 10rpx">
         <view wx:for="{{[1,2,3,4,5,6,7,8,9,10]}}" wx:key='' style='display: flex;width: 35rpx;height: 100rpx;font-size: 9pt;justify-content:center;align-items: center;'>
           {{item}}
@@ -20,7 +16,6 @@
         </view>
       </view>
 
-      <!--课表-->
       <view wx:for="{{week_list}}" wx:key=''>
         <scroll-view scroll-y="true" class="flex-item kcb-item" style="margin-left:{{(item.day_of_week-1)*100}}rpx;margin-top:{{(item.class_of_day-1)*100+2}}rpx;height:{{item.duration*100-2}}rpx;background-color:{{colorArrays[index%8]}};border-radius:10rpx;">
           <view style='display:flex;flex-direction:column;padding:10rpx 5rpx 0rpx 5rpx;'>
@@ -31,6 +26,4 @@
       </view>
     </view>
   </view>
-
-
 </view>

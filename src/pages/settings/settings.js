@@ -1,6 +1,13 @@
 // pages/settings/settings.js
 const app = getApp()
 Page({
+
+  onShow: function () {
+  wx.setNavigationBarTitle({
+    title: '设置',
+  })
+  },
+
   scanCode: function () {
     wx.scanCode({
       success: (res) => {
