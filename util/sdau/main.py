@@ -12,15 +12,10 @@ HTML_HEAD = """<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>成绩表</title>
 </head>"""
 
-def main():
-
-    os.system('clear')
+def get_class_info(username,password):
     flag = -1
-    username = input('账号:')
-    password = input('密码:')
 
     times = 0
     while flag < 0:
@@ -29,9 +24,7 @@ def main():
         if times > 10:
             print("登录次数过多,请检查账号密码重新登录")
             return
-
-    text = s.get("http://jw.sdau.edu.cn/xkAction.do?actionType=6").text
-
+    text = HTML_HEAD+s.get("http://jw.sdau.edu.cn/xkAction.do?actionType=6").text
     soup = BeautifulSoup(text,'lxml')
     map = {"一":1,"二":2,"三":3,"四":4,"五":5,"六":6,"七":7,"八":8,"九":9,"十":10}
     objs=[]
@@ -71,9 +64,9 @@ def main():
     ret={"schdules_list":objs,"start":start}
 
     qr=qrcode.QRCode(
-                version=4,
+                version=40,
                 error_correction=qrcode.constants.ERROR_CORRECT_L,
-                box_size=10,
+                box_size=5,
                 border=5, 
                 )
     qr.add_data(json.dumps(ret, ensure_ascii=False))
@@ -83,4 +76,6 @@ def main():
     print("二维码已被保存为qr.png")
 
 if __name__ == '__main__':
-    main()
+    username=input('Username:')
+    password=input('Password:')
+    get_class_info(username,password)
