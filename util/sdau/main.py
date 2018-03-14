@@ -77,11 +77,14 @@ def get_class_info(username, password):
         box_size=5,
         border=5,
     )
-    qr.add_data(json.dumps(ret, ensure_ascii=False))
-    qr.make(fit=True)
-    img = qr.make_image()
-    img.save('{}.png'.format(username))
-    print("二维码已被保存为qr.png")
+    try:
+        qr.add_data(json.dumps(ret, ensure_ascii=False))
+        qr.make(fit=True)
+        img = qr.make_image()
+        img.save('{}.png'.format(username))
+        print('成功生成二维码')
+    except BaseException:
+        print(json.dumps(ret, ensure_ascii=False))
 
 
 if __name__ == '__main__':
