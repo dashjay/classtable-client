@@ -26,4 +26,22 @@ Page({
       }
     })
   },
+  getClipboard:function(){
+    wx.getClipboardData({
+      success: function (res) {
+        var obj = JSON.parse(res.data)
+        app.globalData.start = new Date(obj.start.year, obj.start.month - 1, obj.start.day)
+        app.globalData.schdules_list = obj.schdules_list
+        try {
+          wx.setStorageSync("start", app.globalData.start)
+          wx.setStorageSync("schdules_list", app.globalData.schdules_list)
+        } catch (e) {
+          console.log(e)
+        }
+        wx.switchTab({
+          url: '../table/table'
+        })
+      }
+    })
+  },
 })
