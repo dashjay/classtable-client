@@ -1,0 +1,4 @@
+<!--pages/settings/settings.wxml-->
+<view style='display: flex;flex-direction:column;margin-top:300rpx'>
+  <button style='margin-top:50rpx' bindtap='getClipboard'>剪切板获取信息</button>
+</view>
