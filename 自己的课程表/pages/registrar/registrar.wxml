@@ -1,0 +1,48 @@
+<!--pages/registrar/registrar.wxml-->
+<form bindsubmit="formSubmit">
+  <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">
+    <view style='width:160rpx;text-align:left'>学校</view>
+    <picker name="school" bindchange="setSchool" value="{{index}}" range="{{array}}">
+      <view class="picker">
+        :{{array[index]}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">
+    <view style='width:160rpx;text-align:left'>开学日期</view>
+    <picker name="date" mode="date" value="{{date}}" start="2018-01-01" end="2025-12-31" bindchange="setDate">
+
+      <view class="picker">
+        :{{date}}
+      </view>
+    </picker>
+  </view>
+
+  <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">
+    <view style='width:160rpx;text-align:left'>用户名</view>
+    :
+    <input name="username"></input>
+  </view>
+
+  <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">
+    <view style='width:160rpx;text-align:left'>密码</view>
+    :
+    <input name="password" password="true"></input>
+  </view>
+
+  <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">
+    <view style='width:160rpx;text-align:left'>验证码</view>
+    :
+    <input name="captcha"></input>
+  </view>
+
+  <view style="margin:50rpx;padding:5rpx 65rpx;display: flex; justify-content:center;">
+    <image bindtap='getCaptcha' mode="scaleToFill" src='data:image/jpg;base64,{{captcha_base64}}' style='height:100rpx;width:500rpx;border-style:dashed;border-width: 1rpx;'></image>
+  </view>
+
+  <view style="margin:40rpx;padding:20rpx;">
+    <button formType="submit">提交</button>
+    <button formType="reset">重新输入</button>
+  </view>
+</form>

@@ -3,7 +3,7 @@ const app = getApp()
 Page({
   onShow: function () {
     wx.setNavigationBarTitle({
-      title: '导入课表',
+      title: '设置',
     })
   },
 
@@ -23,10 +23,23 @@ Page({
           wx.showToast({
             title: '信息有误 请阅读文档',
             icon: 'none',
-            duration: 2000
+            duration: 1000
           })
         }
       }
     })
   },
+
+  enterRegistrar: function () {
+    wx.navigateTo({
+      url: '/pages/registrar/registrar'
+    })
+  },
+
+  about:function(){
+    wx.navigateTo({
+      url: '/pages/about/about'
+    })
+  },
+
 })

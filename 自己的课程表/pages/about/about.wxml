@@ -1,0 +1,10 @@
+<!--pages/about/about.wxml-->
+<view style='margin:50rpx;' bindtap='setClipboardServer'>
+  添加学校请直接PR
+  <button>服务器端</button>
+</view>
+
+<view style='margin:50rpx;' bindtap='setClipboardClient'>
+  小程序使用过程中出现问题请在该项目中提交issues
+  <button>客户端</button>
+</view>
