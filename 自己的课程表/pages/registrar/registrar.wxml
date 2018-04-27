@@ -28,7 +28,7 @@
   <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">
     <view style='width:160rpx;text-align:left'>密码</view>
     :
-    <input name="password" password="true"></input>
+    <input name="password" password="true" bindchange="getCaptcha"></input>
   </view>
 
   <view class="section" style="background:#eeeeee;margin:20rpx;padding:20rpx;display:flex;flex-direction:row">

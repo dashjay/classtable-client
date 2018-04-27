@@ -3,8 +3,8 @@ const app = getApp()
 Page({
 
   data: {
-    date: '2018-03-15',
-    array: ['TSMC', 'SDAU'],
+    date: '2018-03-05',
+    array: ['TSMC'],
     index: 0,
     username: 'Ya',
     password: '****',
@@ -26,9 +26,9 @@ Page({
 
   getCaptcha: function () {
     var _this = this;
-    var school = this.data.array[this.data.index];
+    var school = (this.data.array[this.data.index]).toLowerCase();
     wx.request({
-      url: 'http://classtable/login',
+      url: 'https://wx.classtable.cn/login',
       data: {
         school: school,
       },
@@ -55,9 +55,10 @@ Page({
     var username = e.detail.value.username;
     var password = e.detail.value.password;
     var captcha_text = e.detail.value.captcha;
+    console.log(year)
 
     wx.request({
-      url: 'http://classtable/login',
+      url: 'https://wx.classtable.cn/login',
       method: 'POST',
       data: {
         school: school,
@@ -75,8 +76,17 @@ Page({
       success: function (res) {
         console.log(res.data)
         var obj = res.data
+        if(obj=="Error"){
+          wx.showToast({
+            title: '信息有误 请阅读文档',
+            icon: 'none',
+            duration: 1000
+          })
+          return
+        }
         app.globalData.start = new Date(obj.start.year, obj.start.month - 1, obj.start.day)
         app.globalData.classtable = obj.classtable
+        
         wx.setStorageSync("start", app.globalData.start)
         wx.setStorageSync("classtable", app.globalData.classtable)
         wx.switchTab({
