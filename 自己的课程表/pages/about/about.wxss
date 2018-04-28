@@ -1,1 +1,13 @@
 /* pages/about/about.wxss */
+.item {
+  display: flex;
+  height: 375rpx;
+  width: 375rpx;
+  flex-grow:1;
+}
+
+.text {
+  padding-top:130rpx; 
+  padding-left: 100rpx;
+  padding-right: 100rpx;
+}

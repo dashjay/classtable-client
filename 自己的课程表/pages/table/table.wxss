@@ -1,4 +1,5 @@
 /* pages/table/table.wxss */
+
 .flex-item {
   width: 99rpx;
 }
@@ -8,12 +9,20 @@
   justify-content: center;
   display: flex;
   align-items: center;
-
 }
 
 .smalltext {
   font-size: 8pt;
   color: #fff;
+}
+
+.top-style {
+  display: flex;
+  flex-direction: row;
+  margin-left: 35rpx;
+  margin-top: 15rpx;
+  background-color: #eee;
+  border-radius: 10rpx;
 }
 
 .top-text {
@@ -23,9 +32,28 @@
   justify-content: center;
   display: flex;
   align-items: center;
-
 }
 
+.full-table {
+  height: 1110rpx;
+  width: 730rpx;
+  display: flex;
+}
+
+.left-num-bar {
+  background-color: #eee;
+  color: #000;
+  border-radius: 10rpx;
+}
+
+.left-num {
+  display: flex;
+  width: 35rpx;
+  height: 100rpx;
+  font-size: 9pt;
+  justify-content: center;
+  align-items: center;
+}
 
 .left {
   width: 35rpx;

@@ -1,1 +1,21 @@
 /* pages/settings/settings.wxss */
+page{
+  color: white;
+}
+.full-style {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.item {
+  height: 375rpx;
+  width: 375rpx;
+  flex-grow:1;
+}
+
+.text {
+  padding-top:130rpx; 
+  padding-left: 100rpx;
+  padding-right: 100rpx;
+}

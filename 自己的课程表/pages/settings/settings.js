@@ -2,6 +2,7 @@
 const app = getApp()
 Page({
   onShow: function () {
+    
     wx.setNavigationBarTitle({
       title: '设置',
     })
@@ -36,10 +37,16 @@ Page({
     })
   },
 
-  about:function(){
+  about: function () {
     wx.navigateTo({
       url: '/pages/about/about'
     })
   },
-
+  nothing: function () {
+    wx.showToast({
+      title: '跟你说了没有效果还要点,故意的吗',
+      icon: 'none',
+      duration: 2000
+    })
+  }
 })

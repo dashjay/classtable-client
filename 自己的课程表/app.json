@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/table/table",
     "pages/settings/settings",
+    "pages/table/table",
+    
     "pages/registrar/registrar",
     "pages/about/about"
   ],

@@ -1,13 +1,13 @@
 <!--table.wxml-->
 <view bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd">
-  <view style='display: flex;flex-direction: row;margin-left:35rpx;margin-top:15rpx;background-color: #eee;border-radius: 10rpx'>
+  <view class='top-style'>
     <view wx:for="{{['一','二','三','四','五','六','日']}}" wx:key='' class="top-text">周{{item}}</view>
   </view>
 
   <view>
-    <view style="height:1110rpx;width:730rpx;display:flex;">
-      <view style="background-color:#eee;color:#000;border-radius: 10rpx">
-        <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11]}}" wx:key='' style='display: flex;width: 35rpx;height: 100rpx;font-size: 9pt;justify-content:center;align-items: center;'>
+    <view class='full-table'>
+      <view class="left-num-bar">
+        <view wx:for="{{[1,2,3,4,5,6,7,8,9,10,11]}}" wx:key='' class='left-num'>
           {{item}}
         </view>
       </view>
