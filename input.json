@@ -1,0 +1,279 @@
+{
+    "classtable": [
+        {
+            "name": "编译原理",
+            "place": "北校5号楼N-102",
+            "day_of_week": 1,
+            "class_of_day": 3,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "编译原理",
+            "place": "北校5号楼N-102",
+            "day_of_week": 5,
+            "class_of_day": 3,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "计算机体系结构",
+            "place": "北校5号楼S-104",
+            "day_of_week": 1,
+            "class_of_day": 5,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "计算机体系结构",
+            "place": "北校5号楼S-104",
+            "day_of_week": 4,
+            "class_of_day": 1,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "计算机英语",
+            "place": "北校12号楼111",
+            "day_of_week": 2,
+            "class_of_day": 1,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        {
+            "name": "计算机英语",
+            "place": "北校12号楼111",
+            "day_of_week": 5,
+            "class_of_day": 1,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        {
+            "name": "计算机科学与技术研究进展",
+            "place": "北校3号楼102",
+            "day_of_week": 3,
+            "class_of_day": 1,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "专业综合实习2",
+            "place": "北校实践环节地点信息实践N",
+            "day_of_week": 6,
+            "class_of_day": 5,
+            "duration": 1,
+            "week_num": [
+                5
+            ]
+        },
+        {
+            "name": "职业发展与就业创业指导课3",
+            "place": "北校5号楼N-201",
+            "day_of_week": 7,
+            "class_of_day": 7,
+            "duration": 2,
+            "week_num": [
+                2,
+                3,
+                4,
+                5
+            ]
+        },
+        {
+            "name": "体育健康与标准测试2",
+            "place": "北校区体育健美馆",
+            "day_of_week": 1,
+            "class_of_day": 7,
+            "duration": 2,
+            "week_num": [
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15
+            ]
+        },
+        {
+            "name": "Linux操作系统实验",
+            "place": "北校文理大楼505",
+            "day_of_week": 4,
+            "class_of_day": 3,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+            ]
+        },
+        {
+            "name": "人工智能",
+            "place": "北校5号楼N-103",
+            "day_of_week": 2,
+            "class_of_day": 9,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "人工智能",
+            "place": "北校5号楼N-403",
+            "day_of_week": 4,
+            "class_of_day": 7,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12
+            ]
+        },
+        {
+            "name": "物联网概论",
+            "place": "北校5号楼S-106",
+            "day_of_week": 3,
+            "class_of_day": 5,
+            "duration": 2,
+            "week_num": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16
+            ]
+        }
+    ],
+    "start": {
+        "year": 2018,
+        "month": 3,
+        "day": 5
+    }
+}
