@@ -1,4 +1,0 @@
-<!--pages/about/about.wxml-->
-<view style='margin:25rpx;' bindtap='setClipboardClient'>
-  <image style='height: 1100rpx;width: 700rpx;' src='/images/ya.jpg'></image>
-</view>

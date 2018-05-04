@@ -1,66 +1,66 @@
-// pages/table/table.js
 const app = getApp()
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     colorArrays: ["#85B8CF", "#90C652", "#D8AA5A", "#FC9F9D", "#0A9A84", "#61BC69", "#12AEF3", "#E29AAD"],
-    lastX: 0,          //滑动开始x轴位置
-    currentGesture: '', //标识手势
+    lastX: 0,
+    currentGesture: '',
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  isNotExisted: function (item) {
+    if (item == "" || item == null) {
+      return true
+    }
+    return false
+  },
+
+  haveData: function () {
+    console.log(app.globalData.start)
+    if (
+      this.isNotExisted(app.globalData.classtable) ||
+      this.isNotExisted(app.globalData.start)
+    ) {
+      return false
+    }
+    return true
+  },
+
   onLoad: function (options) {
     this.setData({
       increment: 0
     })
 
-    try {
-      // 尝试读取缓存
-      app.globalData.start = wx.getStorageSync('start')
-      app.globalData.classtable = wx.getStorageSync('classtable')
-    } catch (e) {
-      console.log(e)
-    }
+    app.globalData.start = wx.getStorageSync('start')
+    app.globalData.classtable = wx.getStorageSync('classtable')
+
+
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow: function () {
-
-    if (app.globalData.start == null || app.globalData.start == "") {
-      wx.switchTab({
-        url: '/pages/settings/settings'
+    if (!this.haveData()) {
+      wx.showToast({
+        title: '长按该页面,获取剪切板数据',
+        icon: 'none',
+        duration: 3000
       })
+      return
     }
     this.incrementZero()
-    this.updateScreen()
   },
 
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh: function () {
-    this.incrementZero()
-    wx.stopPullDownRefresh()
+    setTimeout(this.incrementZero, 500)
+    setTimeout(wx.stopPullDownRefresh, 500)
   },
 
   getWeekList: function (diff_day) {
+
     var week_num = parseInt(diff_day / 7 + 1)
     this.setData({
       week_num: week_num,
     })
     var week_list = []
 
-    if (app.globalData.classtable == null) {
-      return null
-    }
     for (var i = 0; i < app.globalData.classtable.length; i++) {
       if (app.globalData.classtable[i].week_num.indexOf(week_num) != -1) {
         week_list.push({
@@ -76,6 +76,9 @@ Page({
   },
 
   updateScreen: function () {
+    if (!this.haveData()) {
+      return
+    }
     var now = new Date()
     var diff_day_without_increment = parseInt((now - app.globalData.start) / (1000 * 60 * 60 * 24))
     var diff_day = diff_day_without_increment + this.data.increment
@@ -92,26 +95,21 @@ Page({
       title: "第" + this.data.week_num + "周"
     })
   },
+
   incrementAdd: function () {
     var increment = this.data.increment + 7
-    this.setData({
-      increment: increment
-    })
+    this.setData({ increment: increment })
     this.updateScreen()
   },
 
   incrementSub: function () {
     var increment = this.data.increment - 7
-    this.setData({
-      increment: increment
-    })
+    this.setData({ increment: increment })
     this.updateScreen()
   },
+
   incrementZero: function () {
-    var increment = 0
-    this.setData({
-      increment: increment
-    })
+    this.setData({ increment: 0 })
     this.updateScreen()
   },
 
@@ -119,30 +117,59 @@ Page({
   handleTouchMove: function (event) {
     var currentX = event.touches[0].pageX
     var tx = currentX - this.data.lastX
-    var text = ""
-    if (tx < -40) {
-      this.data.currentGesture = 'left'
-    }
-
-    else if (tx > 40) {
-      this.data.currentGesture = 'right'
-    }
+    if (tx < -100) { this.data.currentGesture = 'left' }
+    else if (tx > 100) { this.data.currentGesture = 'right' }
   },
 
-  //滑动开始事件
+
   handleTouchStart: function (event) {
     this.data.lastX = event.touches[0].pageX
   },
 
-  //滑动结束事件
   handleTouchEnd: function (event) {
-    if (this.data.currentGesture == 'left') {
-      this.incrementAdd()
-    }
-    if (this.data.currentGesture == 'right') {
-      this.incrementSub()
-    }
+    if (this.data.currentGesture == 'left') { this.incrementAdd() }
+    if (this.data.currentGesture == 'right') { this.incrementSub() }
     this.data.currentGesture = 0;
   },
 
+  getClipboard: function () {
+    wx.getClipboardData({
+      success: function (res) {
+        try {
+          var obj = JSON.parse(res.data)
+          if (obj.start.year == null) {
+            throw 'Error'
+          }
+          app.globalData.start = new Date(
+            obj.start.year,
+            obj.start.month - 1,
+            obj.start.day)
+
+          app.globalData.classtable = obj.classtable
+          wx.setStorageSync("start", app.globalData.start)
+          wx.setStorageSync("classtable", app.globalData.classtable)
+        } catch (e) {
+          wx.showToast({
+            title: '信息有误',
+            icon: 'none',
+            duration: 1000
+          })
+        }
+      }
+    })
+  },
+
+  bindLongTab: function () {
+    var _this = this
+    wx.showModal({
+      title: '提示',
+      content: '是否从剪切板更新课表',
+      success: function (res) {
+        if (res.confirm) {
+          _this.getClipboard()
+          setTimeout(_this.incrementZero, 500)
+        }
+      }
+    })
+  }
 })
