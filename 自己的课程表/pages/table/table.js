@@ -149,10 +149,21 @@ Page({
           wx.setStorageSync("start", app.globalData.start)
           wx.setStorageSync("classtable", app.globalData.classtable)
         } catch (e) {
+          wx.setClipboardData({
+            data: 'https://classtable.lanthora.org',
+            success: function (res) {
+              wx.getClipboardData({
+                success: function (res) {
+                  console.log(res.data) // data
+                }
+              })
+            }
+          })
+
           wx.showToast({
-            title: '信息有误',
+            title: '信息有误,获取信息方式已复制到剪切板,请使用浏览器查看',
             icon: 'none',
-            duration: 1000
+            duration: 5000
           })
         }
       }
